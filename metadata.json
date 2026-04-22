@@ -1,0 +1,8 @@
+{
+  "name": "Designa-rs - The Designer's Arena",
+  "description": "A premier platform for designers to sharpen their skills through real-world design briefs, community feedback, and competitive leaderboards. Built for designers by designers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
