@@ -20,7 +20,6 @@ export interface DesignBrief {
   description: string;
   difficulty: Difficulty;
   category: Category;
-  points: number;
   image: string;
   deliverables: string[];
   tools: string[];
@@ -58,9 +57,7 @@ export interface User {
   name: string;
   email: string;
   avatar: string;
-  points: number;
   challengesCompleted: number;
-  rank: number;
   bio?: string;
   location?: string;
   skills: string[];

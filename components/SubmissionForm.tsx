@@ -83,7 +83,7 @@ const SubmissionForm: React.FC<SubmissionFormProps> = ({ onClose, challengeTitle
             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Submission Received!</h2>
-          <p className="text-slate-500 dark:text-slate-400">Your points are being calculated. Great work!</p>
+          <p className="text-slate-500 dark:text-slate-400">Queued for review.</p>
         </div>
       </div>
     );

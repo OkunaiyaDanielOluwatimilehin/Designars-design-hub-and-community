@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark as faBookmarkSolid, faSearch, faMagic } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as faBookmarkSolid, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as faBookmarkRegular } from '@fortawesome/free-regular-svg-icons';
 import ChallengeCard from '../components/ChallengeCard';
 import { Category, Difficulty, DesignBrief } from '../types';
@@ -137,7 +136,7 @@ const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
               <p className="text-slate-500 dark:text-slate-400 font-medium mb-8">
                 {showSavedOnly 
                   ? 'Browse the arena and bookmark challenges you want to tackle later.' 
-                  : 'Try broadening your filters or use our AI to generate a custom one.'}
+                  : 'Try broadening your filters.'}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <button 
@@ -146,32 +145,9 @@ const Challenges: React.FC<ChallengesProps> = ({ challenges }) => {
                 >
                   Clear all filters
                 </button>
-                <Link 
-                  to="/generator"
-                  className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-indigo-200 dark:shadow-none transition-all hover:-translate-y-1"
-                >
-                  Try AI Generator
-                </Link>
               </div>
             </div>
           )}
-        </div>
-
-        {/* AI Brief Generator Banner */}
-        <div className="mt-24 p-12 bg-indigo-600 rounded-[3rem] text-white overflow-hidden relative group">
-          <div className="absolute top-0 right-0 -z-0 w-[400px] h-[400px] bg-white/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-4xl font-black mb-4">Can't find the perfect brief?</h2>
-              <p className="text-indigo-100 text-lg font-medium">Use our AI-powered brief generator to create a custom challenge based on any topic you can imagine.</p>
-            </div>
-            <Link 
-              to="/generator"
-              className="px-12 py-5 bg-white text-indigo-600 rounded-3xl font-black text-lg shadow-2xl hover:scale-105 transition-all whitespace-nowrap"
-            >
-              Generate Custom Brief
-            </Link>
-          </div>
         </div>
       </div>
     </div>

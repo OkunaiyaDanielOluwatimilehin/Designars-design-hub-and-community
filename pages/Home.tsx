@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faUsers, faMagic, faPalette, faBook, faBriefcase, faTrophy, faPlay, faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faUsers, faMagic, faPalette, faBook, faBriefcase, faPlay, faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import ChallengeCard from '../components/ChallengeCard';
 import { DesignBrief } from '../types';
 import { supabaseService } from '../services/supabaseService';
@@ -30,8 +30,7 @@ const Home: React.FC<HomeProps> = ({ challenges }) => {
   const [stats, setStats] = useState({
     challenges: 42,
     members: 12400,
-    submissions: 8900,
-    points: 250000
+    submissions: 8900
   });
 
   useEffect(() => {
@@ -170,8 +169,7 @@ const Home: React.FC<HomeProps> = ({ challenges }) => {
             {[
               { label: 'Briefs Available', value: stats.challenges },
               { label: 'Active Members', value: stats.members },
-              { label: 'Submissions', value: stats.submissions },
-              { label: 'Total XP Earned', value: stats.points.toLocaleString() }
+              { label: 'Submissions', value: stats.submissions }
             ].map((stat, i) => (
               <div key={i} className="space-y-2 p-4 rounded-3xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                 <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter">{stat.value}</div>
@@ -188,7 +186,7 @@ const Home: React.FC<HomeProps> = ({ challenges }) => {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div className="max-w-2xl text-center md:text-left">
               <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-6">The Challenge Arena.</h2>
-              <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">Fresh briefs designed to push your limits. Tackle these challenges to build your portfolio and climb the global hall of fame.</p>
+              <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">Fresh briefs designed to push your limits. Build portfolio-ready work and ship faster.</p>
             </div>
             <Link to="/challenges" className="hidden md:flex items-center space-x-2 text-indigo-600 font-black text-sm uppercase tracking-widest group">
               <span>View All Briefs</span>

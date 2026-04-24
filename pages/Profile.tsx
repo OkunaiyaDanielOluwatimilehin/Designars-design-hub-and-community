@@ -1,4 +1,4 @@
-
+﻿
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { User } from '../types';
@@ -80,9 +80,6 @@ const Profile: React.FC<ProfileProps> = ({ currentUser }) => {
                   alt={user.name} 
                 />
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-indigo-600 text-white px-4 py-2 rounded-2xl font-black text-sm shadow-xl border-4 border-white dark:border-slate-900">
-                Rank #{user.rank || '??'}
-              </div>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white mb-4 tracking-tighter">
@@ -131,7 +128,7 @@ const Profile: React.FC<ProfileProps> = ({ currentUser }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl">
               {[
-                { label: 'Total XP', value: user.points.toLocaleString(), color: 'text-indigo-600' },
+                { label: 'Challenges', value: user.challengesCompleted.toLocaleString(), color: 'text-indigo-600' },
                 { label: 'Briefs Downloaded', value: '12', color: 'text-slate-900 dark:text-white' },
                 { label: 'Completion', value: '94%', color: 'text-emerald-500' },
               ].map((stat, i) => (
@@ -166,12 +163,12 @@ const Profile: React.FC<ProfileProps> = ({ currentUser }) => {
         {activeTab === 'achievements' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {[
-              { icon: '🚀', label: 'First Launch', desc: 'Completed 1st brief' },
-              { icon: '💎', label: 'Expert Class', desc: 'Expert brief solved' },
-              { icon: '⚡', label: 'Fast Mover', desc: 'Top 100 rank' },
-              { icon: '🔥', label: 'Streaker', desc: '7 days active' },
-              { icon: '💬', label: 'Critique', desc: '10 comments left' },
-              { icon: '🌟', label: 'Verified', desc: 'Account verified' },
+              { icon: 'ðŸš€', label: 'First Launch', desc: 'Completed 1st brief' },
+              { icon: 'ðŸ’Ž', label: 'Expert Class', desc: 'Expert brief solved' },
+              { icon: 'âœ¨', label: 'Contributor', desc: 'Shared 1st solution' },
+              { icon: 'ðŸ”¥', label: 'Streaker', desc: '7 days active' },
+              { icon: 'ðŸ’¬', label: 'Critique', desc: '10 comments left' },
+              { icon: 'ðŸŒŸ', label: 'Verified', desc: 'Account verified' },
             ].map((badge, i) => (
               <div key={i} className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 text-center group hover:border-indigo-500 transition-all">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{badge.icon}</div>
@@ -252,3 +249,4 @@ const Profile: React.FC<ProfileProps> = ({ currentUser }) => {
 };
 
 export default Profile;
+

@@ -100,37 +100,21 @@ export const supabaseService = {
     return data;
   },
 
-  async getRankings(): Promise<User[]> {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .order('points', { ascending: false })
-      .limit(50);
-    
-    if (error) throw error;
-    return data || [];
-  },
-
   async getAppStats() {
     const results = await Promise.allSettled([
       supabase.from('challenges').select('*', { count: 'exact', head: true }),
       supabase.from('profiles').select('*', { count: 'exact', head: true }),
-      supabase.from('submissions').select('*', { count: 'exact', head: true }),
-      supabase.from('profiles').select('points')
+      supabase.from('submissions').select('*', { count: 'exact', head: true })
     ]);
 
     const challengesCount = results[0].status === 'fulfilled' ? results[0].value.count : 0;
     const profilesCount = results[1].status === 'fulfilled' ? results[1].value.count : 0;
     const submissionsCount = results[2].status === 'fulfilled' ? results[2].value.count : 0;
-    const pointsData = results[3].status === 'fulfilled' ? results[3].value.data : [];
-
-    const totalPoints = pointsData?.reduce((acc: number, curr: any) => acc + (curr.points || 0), 0) || 0;
 
     return {
       challenges: challengesCount || 0,
       members: profilesCount || 0,
-      submissions: submissionsCount || 0,
-      points: totalPoints
+      submissions: submissionsCount || 0
     };
   },
 

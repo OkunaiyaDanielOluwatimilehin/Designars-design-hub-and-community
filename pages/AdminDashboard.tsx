@@ -46,7 +46,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
     description: '',
     category: Category.UI_UX,
     difficulty: Difficulty.BEGINNER,
-    points: 100,
     image: '',
     deliverables: [],
     tools: [],
@@ -62,7 +61,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: name === 'points' ? parseInt(value) : value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const addDeliverable = () => {
@@ -132,7 +131,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
       description: '',
       category: Category.UI_UX,
       difficulty: Difficulty.BEGINNER,
-      points: 100,
       image: '',
       deliverables: [],
       tools: [],
@@ -144,10 +142,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   const togglePublished = (brief: DesignBrief) => {
     onUpdateChallenge({ ...brief, isPublished: !brief.isPublished });
-  };
-
-  const updateXP = (brief: DesignBrief, xp: number) => {
-    onUpdateChallenge({ ...brief, points: xp });
   };
 
   return (
@@ -208,16 +202,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <textarea name="description" value={formData.description} onChange={handleInputChange} rows={4} placeholder="Detail the creative problem designers need to solve..." className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none transition-all dark:text-white font-medium resize-none" required />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-2">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Difficulty</label>
                     <select name="difficulty" value={formData.difficulty} onChange={handleInputChange} className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none transition-all dark:text-white font-medium appearance-none">
                       {Object.values(Difficulty).map(diff => <option key={diff} value={diff}>{diff}</option>)}
                     </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Reward Points (XP)</label>
-                    <input name="points" type="number" value={formData.points} onChange={handleInputChange} className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none transition-all dark:text-white font-medium" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Cover Image</label>
@@ -276,7 +266,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   description: formData.description || 'Brief description preview...',
                   category: formData.category || Category.UI_UX,
                   difficulty: formData.difficulty || Difficulty.BEGINNER,
-                  points: formData.points || 100,
                   image: formData.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
                   deliverables: formData.deliverables || [],
                   tools: formData.tools || [],
@@ -295,7 +284,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <tr>
                     <th className="px-8 py-5 text-left text-xs font-black text-slate-400 uppercase tracking-widest">Status</th>
                     <th className="px-8 py-5 text-left text-xs font-black text-slate-400 uppercase tracking-widest">Brief Details</th>
-                    <th className="px-8 py-5 text-left text-xs font-black text-slate-400 uppercase tracking-widest">XP Reward</th>
                     <th className="px-8 py-5 text-right text-xs font-black text-slate-400 uppercase tracking-widest">Actions</th>
                   </tr>
                 </thead>
@@ -318,14 +306,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             <div className="text-[10px] text-slate-400 uppercase tracking-widest">{brief.category}</div>
                           </div>
                         </div>
-                      </td>
-                      <td className="px-8 py-6">
-                        <input 
-                          type="number" 
-                          value={brief.points} 
-                          onChange={(e) => updateXP(brief, parseInt(e.target.value))}
-                          className="w-20 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1.5 text-xs font-black text-indigo-600 outline-none"
-                        />
                       </td>
                       <td className="px-8 py-6 text-right space-x-2">
                         <button onClick={() => handleEdit(brief)} className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-5M15.482 3.482a2.121 2.121 0 113 3L9.75 16.25l-4 1 1-4 8.732-8.768z"/></svg></button>

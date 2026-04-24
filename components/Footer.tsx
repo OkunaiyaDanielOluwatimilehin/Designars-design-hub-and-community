@@ -1,5 +1,6 @@
-
+﻿
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faLinkedinIn, faDribbble } from '@fortawesome/free-brands-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +30,7 @@ const Footer: React.FC = () => {
               <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white uppercase">Designa-rs</span>
             </div>
             <p className="text-slate-500 dark:text-slate-400 max-w-sm text-sm leading-relaxed mb-8 font-medium">
-              The ultimate destination for designers to master their craft. Access high-fidelity briefs, curated resources, and a global job board.
+              Design arena + hub â†’ briefs, resources, jobs. Build portfolio. Get hired.
             </p>
             
             {/* Newsletter Form */}
@@ -59,10 +60,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-black text-xs uppercase tracking-widest text-slate-900 dark:text-white mb-6">Platform</h4>
             <ul className="space-y-3 text-sm font-bold text-slate-500 dark:text-slate-400">
-              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Challenges</a></li>
-              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Leaderboard</a></li>
-              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Brief Generator</a></li>
-              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hiring Portal</a></li>
+              <li><Link to="/challenges" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Arena</Link></li>
+              <li><Link to="/hub" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hub</Link></li>
+              <li><Link to="/login" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Sign In</Link></li>
+              <li><Link to="/settings" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Settings</Link></li>
             </ul>
           </div>
           
@@ -89,7 +90,7 @@ const Footer: React.FC = () => {
         
         <div className="pt-12 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">
-            © {new Date().getFullYear()} Designa-rs Hub & Arena. Empowering designers globally.
+            © {new Date().getFullYear()} Designa-rs. Briefs • resources • jobs.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><FontAwesomeIcon icon={faTwitter} /></a>
@@ -104,3 +105,4 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+

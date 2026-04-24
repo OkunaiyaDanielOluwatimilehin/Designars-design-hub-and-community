@@ -20,7 +20,6 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentUser, 
   const navLinks = [
     { name: 'Challenges', path: '/challenges' },
     { name: 'The Hub', path: '/hub' },
-    { name: 'AI Generator', path: '/generator' },
   ];
 
   // Only show Dashboard to authorized users
@@ -123,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentUser, 
                   />
                   <div className="hidden sm:block text-left pr-3">
                     <p className="text-xs font-black text-slate-900 dark:text-white leading-none mb-1">{currentUser.name}</p>
-                    <p className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-widest">{currentUser.points.toLocaleString()} XP</p>
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 font-bold tracking-widest truncate max-w-[12rem]">{currentUser.email}</p>
                   </div>
                   <svg className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isProfileOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
@@ -134,18 +133,11 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentUser, 
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-3 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-4 duration-200">
                     <div className="p-6 border-b border-slate-100 dark:border-slate-800">
-                      <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Your Journey</p>
-                      <div className="flex items-center space-x-3">
-                        <div className="flex-grow">
-                          <div className="flex justify-between text-[10px] font-black uppercase mb-1">
-                            <span className="text-indigo-600">Level 4</span>
-                            <span className="text-slate-400">75% to Pro</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                            <div className="w-3/4 h-full bg-indigo-600 rounded-full"></div>
-                          </div>
-                        </div>
-                      </div>
+                      <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Account</p>
+                      <p className="text-sm font-black text-slate-900 dark:text-white truncate">{currentUser.email}</p>
+                      <p className="text-[10px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-widest mt-2">
+                        {currentUser.challengesCompleted} completed
+                      </p>
                     </div>
                     
                     <div className="p-2">

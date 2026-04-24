@@ -10,7 +10,6 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Settings from './pages/Settings';
-import AiGenerator from './pages/AiGenerator';
 import AdminDashboard from './pages/AdminDashboard';
 import TheHub from './pages/TheHub';
 import { User, DesignBrief, Submission, Article, Resource, Job } from './types';
@@ -42,7 +41,6 @@ const App: React.FC = () => {
       description: 'Design a mobile shopping experience for sustainable products with a focus on carbon footprint transparency.',
       category: 'Mobile App',
       difficulty: 'Intermediate' as any,
-      points: 450,
       image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800',
       isPublished: true,
       likes: 124,
@@ -57,7 +55,6 @@ const App: React.FC = () => {
       description: 'Create a futuristic data visualization dashboard for a space station management system.',
       category: 'UI Design',
       difficulty: 'Advanced' as any,
-      points: 600,
       image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
       isPublished: true,
       likes: 89,
@@ -72,7 +69,6 @@ const App: React.FC = () => {
       description: 'Design a clean, typography-focused portfolio for a creative director.',
       category: 'Web Design',
       difficulty: 'Beginner' as any,
-      points: 300,
       image: 'https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?auto=format&fit=crop&q=80&w=800',
       isPublished: true,
       likes: 56,
@@ -106,9 +102,7 @@ const App: React.FC = () => {
             email: session.user.email || '',
             name: session.user.user_metadata?.full_name || 'User',
             avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${session.user.id}`,
-            points: 0,
             challengesCompleted: 0,
-            rank: 0,
             skills: [],
             joinedDate: new Date().toISOString(),
             notifications: true,
@@ -310,7 +304,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home challenges={allChallenges.filter(c => c.isPublished)} />} />
             <Route path="/challenges" element={<Challenges challenges={allChallenges.filter(c => c.isPublished)} />} />
             <Route path="/hub" element={<TheHub />} />
-            <Route path="/generator" element={<AiGenerator onAddChallenge={handleAddChallenge} />} />
+            <Route path="/generator" element={<Navigate to="/challenges" replace />} />
             <Route path="/challenge/:id" element={<BriefDetail challenges={allChallenges} currentUser={currentUser} />} />
             <Route path="/profile/:id" element={<Profile currentUser={currentUser} />} />
             <Route path="/login" element={currentUser ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />

@@ -147,12 +147,6 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, isSaved, onTog
         </div>
       </div>
       
-      {/* Points Badge (Floating) */}
-      <div className="absolute top-[180px] right-6 flex flex-col items-center justify-center bg-indigo-600 text-white w-14 h-14 rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-none border-2 border-white/20 z-10">
-        <span className="text-lg font-black leading-none">{challenge.points}</span>
-        <span className="text-[8px] font-black uppercase tracking-tighter">XP</span>
-      </div>
-
       {/* Share Modal */}
       {isShareModalOpen && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200" onClick={() => setIsShareModalOpen(false)}>
